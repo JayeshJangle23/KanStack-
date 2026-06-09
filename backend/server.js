@@ -14,9 +14,14 @@ const startEmailMonitorJob = require('./jobs/emailMonitor');
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://kan-stack.vercel.app",
+];
+
 const corsOptions = {
   origin(origin, callback) {
-    if (!origin || origin.startsWith('http://localhost:') || origin === process.env.CLIENT_URL) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
