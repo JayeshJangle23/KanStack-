@@ -47,7 +47,6 @@ A Trello-like task management system with real-time synchronization built with t
 ```bash
 cd backend
 npm install
-cp .env.example .env
 npm run dev
 ```
 
